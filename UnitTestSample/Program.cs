@@ -10,12 +10,15 @@ namespace UnitTestSample
     {
         static void Main(string[] args)
         {
-            // The code provided will print ‘Hello World’ to the console.
-            // Press Ctrl+F5 (or go to Debug > Start Without Debugging) to run your app.
-            Console.WriteLine("Hello World!");
-            Console.ReadKey();
+            var sorting = new QuickSort();
+            var arr = new int[] { 43, 82, 26, -8, 89, 62, -3, 94, 26, 11};
+            
+            Console.WriteLine($"排序前: {string.Join(", ", arr)}");
+            
+            sorting.Sort(arr);
+            Console.WriteLine($"排序後: {string.Join(", ", arr)} ");
 
-            // Go to http://aka.ms/dotnet-get-started-console to continue learning how to build a console app! 
         }
     }
+    
 }
