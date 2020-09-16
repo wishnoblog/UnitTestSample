@@ -1,8 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace UnitTestSample
 {
@@ -11,7 +7,7 @@ namespace UnitTestSample
         static void Main(string[] args)
         {
             var sorting = new QuickSort();
-            var arr = new int[] { 43, 82, 26, -8, 89, 62, -3, 94, 26, 11};
+            var arr = new [] { 43, 82, 26, -8, 89, 62, -3, 94, 26, 11};
             
             Console.WriteLine($"排序前: {string.Join(", ", arr)}");
             

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace UnitTestSample
+﻿namespace UnitTestSample
 {
     /// <summary>
     /// 快速排序法
@@ -19,21 +13,29 @@ namespace UnitTestSample
         {
             Sort(arr, 0, arr.Length - 1);
         }
+
         /// <summary>
         /// 排序
         /// </summary>
         /// <param name="arr">來源資料</param>
         /// <param name="left"></param>
         /// <param name="right"></param>
-        private void Sort(int[] arr, int left, int right)
+        private static void Sort(int[] arr, int left, int right)
         {
-            if (left < right)
+            while (true)
             {
-                var pivot = Partition(arr, left, right);
-                Sort(arr, left, pivot - 1);
-                Sort(arr, pivot + 1, right);
+                if (left < right)
+                {
+                    var pivot = Partition(arr, left, right);
+                    Sort(arr, left, pivot - 1);
+                    left = pivot + 1;
+                    continue;
+                }
+
+                break;
             }
         }
+
         /// <summary>
         /// Partition 調整數列用
         /// </summary>
@@ -41,18 +43,16 @@ namespace UnitTestSample
         /// <param name="left">start</param>
         /// <param name="right">end</param>
         /// <returns></returns>
-        private int Partition(int[] arr, int left, int right)
+        private static int Partition(int[] arr, int left, int right)
         {
             var pivot = arr[right];
             var i = left - 1;
 
-            for (int j = left; j <= right - 1; j++)
+            for (var j = left; j <= right - 1; j++)
             {
-                if (arr[j] <= pivot)
-                {
-                    i++;
-                    Swap(ref arr[i], ref arr[j]);
-                }
+                if (arr[j] > pivot) continue;
+                i++;
+                Swap(ref arr[i], ref arr[j]);
             }
             Swap(ref arr[i + 1], ref arr[right]);
             return i + 1;
@@ -62,7 +62,7 @@ namespace UnitTestSample
         /// </summary>
         /// <param name="a">元素1</param>
         /// <param name="b">元素2</param>
-        private void Swap(ref int a, ref int b)
+        private static void Swap(ref int a, ref int b)
         {
             var temp = a;
             a = b;
